@@ -2,454 +2,431 @@
 
 أسئلة وإجابات مزدوجة اللغة (عربي / إنجليزي) مخصصة للتحضير لمقابلات الـ CTO أو Senior/Lead Flutter Developer.
 
-## 📑 جدول المحتويات (Table of Contents)
+## Table of Contents / جدول المحتويات
 
-* [1. Flutter Core](#1-flutter-core)
-* [2. Dart 3](#2-dart-3)
-* [3. State Management](#3-state-management)
-* [4. Architecture](#4-architecture)
-* [5. Performance](#5-performance)
-* [6. Testing](#6-testing)
-* [7. CI/CD & DevOps](#7-cicd--devops)
-* [8. Vision & Soft Skills](#8-vision--soft-skills)
+1. [Flutter Core / الأساسيات](#1-flutter-core--الأساسيات)
+2. [Dart 3 / لغة دارت](#2-dart-3--لغة-دارت)
+3. [State Management / إدارة الحالة](#3-state-management--إدارة-الحالة)
+4. [Architecture / المعمارية](#4-architecture--المعمارية)
+5. [Performance / الأداء](#5-performance--الأداء)
+6. [Testing / الاختبارات](#6-testing--الاختبارات)
+7. [CI/CD & DevOps / النشر والتكامل المستمر](#7-cicd--devops--النشر-والتكامل-المستمر)
+8. [Vision & Soft Skills / الرؤية والمهارات الشخصية](#8-vision--soft-skills--الرؤية-والمهارات-الشخصية)
 
----
+### 🚥 Difficulty Levels / مستويات الصعوبة
 
-## 1. Flutter Core
-
-### Q1: What's new in Flutter 3.x and how do you keep up with updates?
-
-*س: إيه الجديد في Flutter 3.x وإزاي بتتابع التحديثات؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-Flutter 3.x brought Impeller as the default rendering engine on iOS (and Android in 2024+), multi-view support, better Material 3, and Dart 3 with records & patterns. I follow flutter.dev release notes, the official blog, and Flutter Engage recaps.
-
-**🇪🇬 عربي:**
-إصدار Flutter 3.x قدم Impeller كمحرك الرسوميات الأساسي في iOS (وفي Android من 2024+)، ودعم الـ multi-view، وتحديثات Material 3، وكمان Dart 3 بميزاتها زي records و patterns. بتابع التحديثات من خلال مراجعة الـ release notes على موقع flutter.dev، والمدونة الرسمية، وملخصات مؤتمرات Flutter.
-
-> 💡 **نصيحة:** الـ CTO بيسأل ده عشان يعرف انت متابع ولا لأ — اذكر Impeller و Dart 3 دايماً.
+🟢 **Easy / سهل**\
+🟡 **Medium / متوسط**\
+🔴 **Hard / صعب**
 
 ---
 
-### Q2: Explain the difference between Stateless and Stateful widgets — when do you use each?
+## 1. Flutter Core / الأساسيات
 
-*س: اشرح الفرق بين الـ Stateless والـ Stateful widgets، وإمتى بتستخدم كل نوع؟*
-**المستوى:** 🟢 سهل
+### 🟡 Q1: What's new in Flutter 3.x and how do you keep up with updates?
 
-**🇺🇸 English:**
-Stateless widgets are immutable — rebuild only when parent changes. Stateful widgets hold mutable state via a State object that persists across rebuilds. I use Stateless for pure UI display and Stateful only when the widget manages its own local state.
+*س: ما الجديد في Flutter 3.x وكيف تتابع التحديثات؟*
 
-**🇪🇬 عربي:**
-الـ Stateless widgets غير قابلة للتغيير (Immutable) وبتتعملها إعادة بناء (rebuild) بس لو الـ widget الأب اتغير. أما الـ Stateful widgets فبتحتفظ بحالة متغيرة (Mutable state) عن طريق كائن State بيفضل موجود بين كل rebuild. بستخدم الـ Stateless لعرض الـ UI فقط، والـ Stateful لما الـ widget يكون محتاج يدير حالته الداخلية الخاصة بيه.
+Flutter 3.x brought `Impeller` as the default rendering engine on iOS (and Android in 2024+), multi-view support, better Material 3, and Dart 3 with `records` & `patterns`. I follow flutter.dev release notes, the official blog, and Flutter Engage recaps.
 
-> 💡 **نصيحة:** بعدها ممكن يسألك: 'ليه مش تستخدم Stateful دايماً؟' — الإجابة: overhead وتعقيد غير ضروري.
+إصدار Flutter 3.x قدّم `Impeller` كمحرك الرسوميات الأساسي في iOS (وفي Android من 2024+)، ودعم الـ multi-view، وتحديثات Material 3، بالإضافة إلى Dart 3 بميزاتها مثل `records` و `patterns`. أتابع التحديثات من خلال مراجعة الـ release notes على موقع flutter.dev، والمدونة الرسمية، وملخصات مؤتمرات Flutter.
 
----
-
-### Q3: What is the widget tree vs element tree vs render tree?
-
-*س: إيه الفرق بين الـ Widget tree والـ Element tree والـ Render tree؟*
-**المستوى:** 🔴 صعب
-
-**🇺🇸 English:**
-The widget tree is the immutable blueprint. The element tree is the live instance that connects widgets to their render objects and holds state. The render tree handles actual layout and painting. Flutter reconciles changes by comparing widget trees and only updating changed elements.
-
-**🇪🇬 عربي:**
-الـ Widget tree هي المخطط الأساسي غير القابل للتغيير. الـ Element tree هي النسخة الحية اللي بتربط الـ widgets بكائنات الـ render وبتحتفظ بالحالة (State). أما الـ Render tree فهي المسؤولة عن حساب المساحات (Layout) والرسم الفعلي (Painting) على الشاشة. Flutter بيعمل التحديثات عن طريق مقارنة الـ widget trees وتحديث الـ elements اللي اتغيرت بس.
-
-> 💡 **نصيحة:** ده سؤال يميز المتوسط عن السينيور — اتأكد إنك فاهمه.
+> [!IMPORTANT]
+> The CTO asks this to see if you keep up - always mention `Impeller` and Dart 3.
+>
+> يسأل الـ CTO هذا السؤال ليعرف هل أنت متابع أم لا - اذكر `Impeller` و Dart 3 دائمًا.
 
 ---
 
-### Q4: How does Flutter's rendering pipeline work? (from widget to pixels)
+### 🟢 Q2: Explain the difference between `Stateless` and `Stateful` `widgets` - when do you use each?
 
-*س: إزاي الـ Rendering pipeline في Flutter بيشتغل؟ (من أول الـ widget لحد البيكسلز على الشاشة)*
-**المستوى:** 🔴 صعب
+*س: اشرح الفرق بين الـ `Stateless` والـ `Stateful` `widgets`، ومتى تستخدم كل نوع؟*
 
-**🇺🇸 English:**
-Flutter goes: Build → Layout → Paint → Composite. Widgets build to elements, elements create/update render objects, the render tree computes layout (constraints flow down, sizes flow up), then paints to layers, and Skia/Impeller composites them to the screen via the GPU.
+`Stateless` `widgets` are immutable - rebuild only when parent changes. `Stateful` `widgets` hold mutable state via a `State object` that persists across rebuilds. I use `Stateless` for pure UI display and `Stateful` only when the widget manages its own local state.
 
-**🇪🇬 عربي:**
-العملية بتمشي كالتالي: Build → Layout → Paint → Composite. الـ Widgets بتتبني لـ elements، والـ elements بتنشئ أو تحدث الـ render objects، وبعدين الـ render tree بتحسب الـ layout (القيود بتنزل لتحت، والمقاسات بتطلع لفوق)، وبعدها بيتم الرسم (Paint) على طبقات (Layers)، وفي النهاية Skia أو Impeller بيجمعوا الطبقات دي (Composite) ويرسموها على الشاشة عن طريق كارت الشاشة (GPU).
+الـ `Stateless` `widgets` غير قابلة للتغيير (Immutable) ويُعاد بناؤها (rebuild) فقط إذا تغيّر الـ widget الأب. أما الـ `Stateful` `widgets` فتحتفظ بحالة متغيرة (Mutable state) عن طريق كائن State يبقى موجودًا بين كل rebuild. أستخدم الـ `Stateless` لعرض الـ UI فقط، والـ `Stateful` عندما يحتاج الـ widget إلى إدارة حالته الداخلية.
 
----
-
-### Q5: What is Impeller and why did Flutter move to it?
-
-*س: إيه هو Impeller وليه Flutter نقلت ليه؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-Impeller is Flutter's new rendering engine replacing Skia. It pre-compiles shaders at build time, eliminating the jank caused by runtime shader compilation. Result: smoother animations, especially on first run.
-
-**🇪🇬 عربي:**
-إمبيلر (Impeller) هو محرك الرسوميات الجديد لـ Flutter اللي بيستبدل Skia. الميزة الأساسية فيه إنه بيعمل compile للـ shaders وقت البناء (build time)، وده بيقضي تماماً على التقطيع (jank) اللي كان بيحصل وقت تشغيل الـ shaders في الـ runtime. النتيجة: أنيميشن أسرع وأسلس، خصوصاً عند أول تشغيل للتطبيق.
-
-> 💡 **نصيحة:** ده سؤال 2024-2026 — مهم جداً تعرفه.
+> [!NOTE]
+> They might ask next: "**Why not always use `Stateful`?**" - Answer: unnecessary overhead and complexity.
+>
+> قد يسألك بعدها: 'لماذا لا تستخدم `Stateful` دائمًا؟' - الإجابة: عبء إضافي وتعقيد غير ضروري.
 
 ---
 
-### Q6: How do you handle deep linking and navigation in large apps?
+### 🔴 Q3: What is the `widget tree` vs `element tree` vs `render tree`?
 
-*س: إزاي بتتعامل مع الـ Deep linking والـ Navigation في التطبيقات الكبيرة؟*
-**المستوى:** 🟡 متوسط
+*س: ما الفرق بين الـ `Widget tree` والـ `Element tree` والـ `Render tree`؟*
 
-**🇺🇸 English:**
+The `widget tree` is the immutable blueprint. The `element tree` is the live instance that connects `widgets` to their `render objects` and holds state. The `render tree` handles actual layout and painting. Flutter reconciles changes by comparing widget trees and only updating changed elements.
+
+الـ `Widget tree` هي المخطط الأساسي غير القابل للتغيير. الـ `Element tree` هي النسخة الحية التي تربط الـ `widgets` بكائنات الـ render وتحتفظ بالحالة (State). أما الـ `Render tree` فهي المسؤولة عن حساب المساحات (Layout) والرسم الفعلي (Painting) على الشاشة. يقوم Flutter بالتحديثات عن طريق مقارنة الـ widget trees وتحديث الـ elements التي تغيّرت فقط.
+
+> [!IMPORTANT]
+> This question separates a mid-level from a senior developer - make sure you understand it.
+>
+> هذا السؤال يميّز المتوسط عن المطور الأول (Senior) - تأكد أنك تفهمه جيدًا.
+
+---
+
+### 🔴 Q4: How does Flutter's rendering pipeline work? (from widget to pixels)
+
+*س: كيف تعمل خطوط الـ Rendering pipeline في Flutter؟ (من الـ widget إلى البكسلات على الشاشة)*
+
+Flutter goes: `Build` → `Layout` → `Paint` → `Composite`. Widgets build to elements, elements create/update `render objects`, the `render tree` computes layout (constraints flow down, sizes flow up), then paints to layers, and `Skia`/`Impeller` composites them to the screen via the GPU.
+
+تسير العملية كالتالي: `Build` → `Layout` → `Paint` → `Composite`. تُبنى الـ Widgets إلى elements، وتُنشئ الـ elements أو تُحدّث الـ `render objects`، ثم تحسب الـ `render tree` الـ layout (القيود تنزل للأسفل، والمقاسات تصعد للأعلى)، ثم يتم الرسم على طبقات (Layers)، وفي النهاية يقوم `Skia` أو `Impeller` بتجميع الطبقات ورسمها على الشاشة عبر كارت الشاشة (GPU).
+
+---
+
+### 🟡 Q5: What is `Impeller` and why did Flutter move to it?
+
+*س: ما هو `Impeller` ولماذا انتقل Flutter إليه؟*
+
+`Impeller` is Flutter's new rendering engine replacing `Skia`. It pre-compiles shaders at build time, eliminating the `jank` caused by runtime shader compilation. Result: smoother animations, especially on first run.
+
+`Impeller` هو محرك الرسوميات الجديد لـ Flutter الذي يستبدل `Skia`. ميزته الأساسية أنه يُجمّع الـ shaders وقت البناء (build time)، مما يقضي تمامًا على التقطيع (`jank`) الذي كان يحدث أثناء تشغيل الـ shaders في الـ runtime. النتيجة: رسوم متحركة أسرع وأكثر سلاسة، خاصة عند أول تشغيل للتطبيق.
+
+> [!IMPORTANT]
+> This is a 2024-2026 question - very important to know.
+>
+> هذا سؤال 2024-2026 - من المهم جدًا معرفته.
+
+---
+
+### 🟡 Q6: How do you handle deep linking and navigation in large apps?
+
+*س: كيف تتعامل مع الـ Deep linking والـ Navigation في التطبيقات الكبيرة؟*
+
 I use `go_router` for declarative navigation with deep link support, URL-based routing, and nested navigation. It handles redirects (auth guards), query params, and named routes cleanly. For very large apps I also consider shell routes for persistent bottom nav.
 
-**🇪🇬 عربي:**
-بستخدم مكتبة `go_router` عشان بتوفر طريقة تعريفية (declarative) للـ navigation بتدعم الـ deep links والمسارات المعتمدة على الـ URL والـ nested navigation. المكتبة بتتعامل مع الـ redirects (زي الـ auth guards) والـ query params بشكل نظيف جداً. وفي التطبيقات الضخمة بعتمد على الـ shell routes عشان أحافظ على الـ bottom nav ثابتة.
+أستخدم مكتبة `go_router` لأنها توفر طريقة تعريفية (declarative) للـ navigation تدعم الـ deep links والمسارات المبنية على الـ URL والـ nested navigation. تتعامل المكتبة مع الـ redirects (مثل الـ auth guards) والـ query params بشكل نظيف جدًا. وفي التطبيقات الضخمة أعتمد على الـ shell routes للحفاظ على الـ bottom nav ثابتة.
 
 ---
 
-## 2. Dart 3
+## 2. Dart 3 / لغة دارت
 
-### Q1: What are Records in Dart 3 and when would you use them?
+### 🟡 Q1: What are `Records` in Dart 3 and when would you use them?
 
-*س: إيه هي الـ Records في Dart 3 وإمتى بتستخدمها؟*
-**المستوى:** 🟡 متوسط
+*س: ما هي الـ `Records` في Dart 3 ومتى تستخدمها؟*
 
-**🇺🇸 English:**
-Records are anonymous immutable value types: `(String, int) user = ('Ali', 25)`. Use them to return multiple values from a function without creating a class. They support named fields `({String name, int age})` and work great with pattern matching.
+`Records` are anonymous immutable value types: `(String, int) user = ('Ali', 25)`. Use them to return multiple values from a function without creating a class. They support named fields `({String name, int age})` and work great with `pattern matching`.
 
-**🇪🇬 عربي:**
-الـ Records هي أنواع بيانات غير مسماة وغير قابلة للتغيير، زي مثلاً `(String, int) user = ('Ali', 25)`. بستخدمها عشان أرجع أكتر من قيمة من دالة (function) بدون ما أضطر أعمل class مخصوص ليهم. بتدعم الحقول المسماة وبتشتغل بشكل ممتاز مع الـ pattern matching.
+الـ `Records` هي أنواع بيانات مجهولة الاسم وغير قابلة للتغيير، مثل `(String, int) user = ('Ali', 25)`. أستخدمها لإرجاع أكثر من قيمة من دالة (function) دون الحاجة لإنشاء class مخصص. تدعم الحقول المسماة وتعمل بشكل ممتاز مع الـ `pattern matching`.
 
-> 💡 **نصيحة:** Dart 3 هو أكبر تغيير في اللغة منذ سنين — لازم تعرف Records و Patterns كويس.
-
----
-
-### Q2: Explain pattern matching and sealed classes in Dart 3
-
-*س: اشرح الـ Pattern matching والـ Sealed classes في Dart 3.*
-**المستوى:** 🔴 صعب
-
-**🇺🇸 English:**
-Sealed classes restrict subclassing to the same file, enabling exhaustive switch. Pattern matching lets you destructure and match on types in switch expressions. Together they enable algebraic data types — great for state modeling (Loading, Success, Error).
-
-**🇪🇬 عربي:**
-الـ Sealed classes بتمنع الوراثة منها بره نفس الملف، وده بيسمح بعمل فحص شامل (exhaustive switch). الـ Pattern matching بيسمحلك تفكك البيانات (destructure) وتطابق الأنواع جوه الـ switch expressions. مع بعض، بيوفروا ميزة الـ algebraic data types اللي تعتبر ممتازة في نمذجة الحالات (زي Loading, Success, Error).
+> [!IMPORTANT]
+> Dart 3 is the biggest language change in years - you must know `Records` and `Patterns` well.
+>
+> Dart 3 هو أكبر تغيير في اللغة منذ سنوات - يجب أن تعرف `Records` و `Patterns` جيدًا.
 
 ---
 
-### Q3: What's the difference between async/await, Future, and Stream?
+### 🔴 Q2: Explain `pattern matching` and `sealed classes` in Dart 3
 
-*س: إيه الفرق بين async/await و Future و Stream؟*
-**المستوى:** 🟢 سهل
+*س: اشرح الـ `Pattern matching` والـ `Sealed classes` في Dart 3.*
 
-**🇺🇸 English:**
+`Sealed classes` restrict subclassing to the same file, enabling exhaustive switch. `Pattern matching` lets you destructure and match on types in switch expressions. Together they enable algebraic data types - great for state modeling (Loading, Success, Error).
+
+الـ `Sealed classes` تمنع الوراثة منها خارج نفس الملف، مما يتيح إجراء فحص شامل (exhaustive switch). الـ `Pattern matching` يتيح لك تفكيك البيانات (destructure) ومطابقة الأنواع داخل الـ switch expressions. معًا، يوفران ميزة الـ algebraic data types الممتازة في نمذجة الحالات (مثل Loading, Success, Error).
+
+---
+
+### 🟢 Q3: What's the difference between async/await, Future, and Stream?
+
+*س: ما الفرق بين async/await و Future و Stream؟*
+
 Future is a single async value. Stream is a sequence of async values. async/await is syntactic sugar over Futures. I use Streams for real-time data (WebSocket, Firebase), and Futures for one-off calls (HTTP). StreamController is used for custom streams.
 
-**🇪🇬 عربي:**
-الـ Future بيمثل قيمة واحدة هتيجي في المستقبل (async). الـ Stream بيمثل سلسلة مستمرة من القيم في المستقبل. أما `async/await` فهي مجرد طريقة كتابة بتسهل التعامل مع الـ Futures. بستخدم الـ Streams للبيانات اللحظية (زي WebSockets أو Firebase)، والـ Futures للطلبات اللي بتحصل مرة واحدة (زي الـ HTTP).
+الـ Future يمثل قيمة واحدة ستأتي في المستقبل (async). الـ Stream يمثل سلسلة مستمرة من القيم. أما `async/await` فهي مجرد صياغة مختصرة تسهّل التعامل مع الـ Futures. أستخدم الـ Streams للبيانات اللحظية (مثل WebSockets أو Firebase)، والـ Futures للطلبات التي تحدث مرة واحدة (مثل الـ HTTP).
 
 ---
 
-### Q4: How does Dart handle null safety and what are late variables?
+### 🟢 Q4: How does Dart handle null safety and what are late variables?
 
-*س: إزاي Dart بتتعامل مع الـ Null safety وإيه هي متغيرات الـ late؟*
-**المستوى:** 🟢 سهل
+*س: كيف تتعامل Dart مع الـ Null safety وما هي متغيرات الـ late؟*
 
-**🇺🇸 English:**
-Dart's sound null safety means non-nullable types can never be null. `late` defers initialization — useful for variables initialized after declaration (e.g. in initState). `late final` adds the guarantee it's set only once.
+Dart's `sound null safety` means non-nullable types can never be null. `late` defers initialization - useful for variables initialized after declaration (e.g. in initState). `late final` adds the guarantee it's set only once.
 
-**🇪🇬 عربي:**
-نظام الـ Sound null safety في Dart بيضمن إن المتغيرات اللي مش مسموح تكون null مستحيل تاخد قيمة null أبداً. كلمة `late` بتأجل إعطاء قيمة للمتغير (initialization) لبعدين، وده مفيد جداً للمتغيرات اللي بتاخد قيمتها بعد تعريفها (زي في `initState`). استخدام `late final` بيضيف ضمان إن المتغير ده هياخد قيمته مرة واحدة بس.
+نظام الـ `Sound null safety` في Dart يضمن أن المتغيرات غير القابلة للـ null لا يمكنها أبدًا أن تأخذ قيمة null. كلمة `late` تؤجل إعطاء قيمة للمتغير (initialization) إلى وقت لاحق، وهذا مفيد جدًا للمتغيرات التي تأخذ قيمتها بعد تعريفها (مثل في `initState`). استخدام `late final` يضيف ضمانًا بأن المتغير يأخذ قيمته مرة واحدة فقط.
 
 ---
 
-### Q5: What are isolates in Dart and how do they differ from threads?
+### 🔴 Q5: What are `isolates` in Dart and how do they differ from threads?
 
-*س: إيه هي الـ Isolates في Dart والفرق بينها وبين الـ Threads؟*
-**المستوى:** 🔴 صعب
+*س: ما هي الـ `Isolates` في Dart وما الفرق بينها وبين الـ Threads؟*
 
-**🇺🇸 English:**
-Isolates are Dart's concurrency model — each has its own memory heap and communicates via message passing (SendPort/ReceivePort), unlike threads which share memory. Use `compute()` or `Isolate.run()` for heavy work off the main isolate to avoid UI jank.
+`Isolates` are Dart's concurrency model - each has its own memory heap and communicates via message passing (SendPort/ReceivePort), unlike threads which share memory. Use `compute()` or `Isolate.run()` for heavy work off the main isolate to avoid UI `jank`.
 
-**🇪🇬 عربي:**
-الـ Isolates هي طريقة Dart في التعامل مع التزامن (concurrency). كل Isolate ليه الذاكرة (memory heap) الخاصة بيه وبيتواصل مع التانيين عن طريق إرسال الرسائل، عكس الـ Threads اللي بتشارك نفس الذاكرة. بستخدم `compute()` أو `Isolate.run()` للعمليات التقيلة عشان أشيلها من الـ main isolate وأمنع الـ UI من إنه يهنج (jank).
+الـ `Isolates` هي طريقة Dart في التعامل مع التزامن (concurrency). كل Isolate له ذاكرته (memory heap) الخاصة ويتواصل مع غيره عن طريق إرسال الرسائل، على عكس الـ Threads التي تتشارك نفس الذاكرة. أستخدم `compute()` أو `Isolate.run()` للعمليات الثقيلة لنقلها من الـ main isolate ومنع تقطيع (`jank`) واجهة المستخدم.
 
-> 💡 **نصيحة:** الـ CTO بيسأل ده عشان يعرف هل انت فاهم ليه Flutter بيعمل jank وإزاي تحله.
-
----
-
-## 3. State Management
-
-### Q1: What state management solutions have you used and why would you choose one over another?
-
-*س: إيه حلول الـ State Management اللي استخدمتها، وليه ممكن تختار واحد عن التاني؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-I've used Provider, Riverpod, Bloc, and GetX. Riverpod is my current preference — compile-safe, no context needed, supports async/family providers. Bloc is great for large teams needing strict separation. GetX is fast to set up but too magical for large codebases.
-
-**🇪🇬 عربي:**
-استخدمت Provider و Riverpod و Bloc و GetX. حالياً بفضل Riverpod لأنه آمن وقت الـ compile، مش بيحتاج Context، وبيدعم الـ async بسهولة. أما Bloc فهو ممتاز للفرق الكبيرة اللي محتاجة فصل صارم للكود. و GetX سريع في الإعداد بس سحري بزيادة وممكن يعمل مشاكل في المشاريع الضخمة.
-
-> 💡 **نصيحة:** قول اللي شغلت بيه فعلاً — الـ CTO هيكتشف لو بتكدب.
+> [!NOTE]
+> The CTO asks this to know if you understand why Flutter janks and how to solve it.
+>
+> يسأل الـ CTO هذا ليعرف هل تفهم لماذا يحدث `jank` في Flutter وكيف تحله.
 
 ---
 
-### Q2: How do you avoid unnecessary widget rebuilds?
+## 3. State Management / إدارة الحالة
 
-*س: إزاي بتتجنب الـ Widget rebuilds اللي مالهاش لازمة؟*
-**المستوى:** 🟡 متوسط
+### 🟡 Q1: What state management solutions have you used and why would you choose one over another?
 
-**🇺🇸 English:**
-Use `const` constructors, split widgets into smaller ones, use Consumer/Selector to listen to specific parts of state, avoid expensive computations in `build()`, and use RepaintBoundary for isolated animations.
+*س: ما حلول الـ State Management التي استخدمتها، ولماذا قد تختار واحدًا على آخر؟*
 
-**🇪🇬 عربي:**
-عن طريق استخدام `const` constructors، وتقسيم الـ widgets الكبيرة لأجزاء أصغر، واستخدام `Consumer` أو `Selector` عشان أستمع لأجزاء محددة بس من الـ state. كمان بتجنب العمليات الحسابية المعقدة جوه دالة `build()`، وبستخدم `RepaintBoundary` لعزل الأنيميشن.
+I've used `Provider`, `Riverpod`, `Bloc`, and `GetX`. `Riverpod` is my current preference - compile-safe, no context needed, supports async/family providers. `Bloc` is great for large teams needing strict separation. `GetX` is fast to set up but too magical for large codebases.
 
----
+استخدمت `Provider` و `Riverpod` و `Bloc` و `GetX`. حاليًا أفضّل `Riverpod` لأنه آمن وقت الـ compile، ولا يحتاج Context، ويدعم الـ async بسهولة. أما `Bloc` فهو ممتاز للفرق الكبيرة التي تحتاج فصلًا صارمًا للكود. و `GetX` سريع في الإعداد لكنه يحتوي على كثير من السحر مما قد يسبب مشاكل في المشاريع الضخمة.
 
-### Q3: Explain the BLoC pattern — what problem does it solve?
-
-*س: اشرح نمط الـ BLoC، وإيه المشكلة اللي بيحلها؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-BLoC separates UI from business logic. Events go in, states come out via streams. It makes logic testable independently of UI, enforces unidirectional data flow, and makes state transitions explicit and traceable — great for complex flows.
-
-**🇪🇬 عربي:**
-الـ BLoC بيفصل واجهة المستخدم (UI) عن الـ Business logic. الفكرة إن الـ Events بتدخل والـ States بتخرج عن طريق Streams. ده بيخلي اللوجيك سهل في الـ testing بعيد عن الـ UI، وبيفرض مسار واحد للبيانات (unidirectional data flow)، وبيخلي التغييرات في الـ state واضحة وممكن تتبعها، وده مفيد جداً في التطبيقات المعقدة.
+> [!WARNING]
+> Mention what you actually worked with - the CTO will easily spot a lie.
+>
+> اذكر ما عملت به فعلًا - الـ CTO سيكتشف بسهولة إذا كنت تكذب.
 
 ---
 
-## 4. Architecture
+### 🟡 Q2: How do you avoid unnecessary widget rebuilds?
 
-### Q1: How do you structure a large Flutter project?
+*س: كيف تتجنب الـ Widget rebuilds غير الضرورية؟*
 
-*س: إزاي بتهيكل (Structure) مشروع Flutter كبير؟*
-**المستوى:** 🔴 صعب
+Use `const` constructors, split `widgets` into smaller ones, use Consumer/Selector to listen to specific parts of state, avoid expensive computations in `build()`, and use RepaintBoundary for isolated animations.
 
-**🇺🇸 English:**
-I use feature-first structure with Clean Architecture layers per feature (data/domain/presentation). Shared code lives in `core/`. I use dependency injection (`get_it` + `injectable`), repository pattern to abstract data sources, and use cases for business logic.
-
-**🇪🇬 عربي:**
-بعتمد على هيكلة قائمة على الميزات (Feature-first) مع تطبيق طبقات الـ Clean Architecture لكل ميزة (data/domain/presentation). الكود المشترك بحطه في مجلد `core/`. بستخدم الـ Dependency Injection (عن طريق `get_it` و `injectable`)، وبطبق نمط الـ Repository عشان أعزل مصادر البيانات، والـ Use cases للـ Business logic.
-
-> 💡 **نصيحة:** الـ CTO بيسأل ده أكتر من أي سؤال تاني — جهز مثال من project حقيقي.
+عن طريق استخدام `const` constructors، وتقسيم الـ `widgets` الكبيرة إلى أجزاء أصغر، واستخدام `Consumer` أو `Selector` للاستماع إلى أجزاء محددة فقط من الـ state. كذلك أتجنب العمليات الحسابية المعقدة داخل دالة `build()`، وأستخدم `RepaintBoundary` لعزل الرسوم المتحركة.
 
 ---
 
-### Q2: What is Clean Architecture and how does it apply to Flutter?
+### 🟡 Q3: Explain the `BLoC` pattern - what problem does it solve?
 
-*س: إيه هي الـ Clean Architecture وإزاي بنطبقها في Flutter؟*
-**المستوى:** 🔴 صعب
+*س: اشرح نمط الـ `BLoC`، وما المشكلة التي يحلها؟*
 
-**🇺🇸 English:**
-Clean Architecture has 3 layers: Presentation (widgets + state), Domain (use cases + entities, no Flutter dependencies), Data (repositories + APIs + local DB). Dependency rule: outer layers depend on inner, never reverse. This makes business logic framework-agnostic and testable.
+`BLoC` separates UI from business logic. Events go in, states come out via streams. It makes logic testable independently of UI, enforces `unidirectional data flow`, and makes state transitions explicit and traceable - great for complex flows.
 
-**🇪🇬 عربي:**
-الـ Clean Architecture بتتكون من 3 طبقات: Presentation (للـ widgets والـ state)، Domain (للـ use cases والـ entities ومفهاش أي اعتماد على Flutter)، و Data (للـ repositories والـ APIs وقواعد البيانات المحلية). قاعدة الاعتمادية: الطبقات الخارجية بتعتمد على الداخلية، وعمرها ما تتعكس. ده بيخلي الـ Business logic مستقل عن الفريم ورك وسهل يتفرمت (testable).
+الـ `BLoC` يفصل واجهة المستخدم (UI) عن الـ Business logic. الفكرة أن الـ Events تدخل والـ States تخرج عن طريق Streams. هذا يجعل المنطق البرمجي قابلًا للاختبار بشكل مستقل عن الـ UI، ويفرض مسارًا واحدًا للبيانات (`unidirectional data flow`)، ويجعل التغييرات في الـ state واضحة وقابلة للتتبع، مما يفيد جدًا في التطبيقات المعقدة.
 
 ---
 
-### Q3: How do you handle feature modularity or micro-frontends in Flutter?
+## 4. Architecture / المعمارية
 
-*س: إزاي بتتعامل مع الـ Feature modularity أو الـ Micro-frontends في Flutter؟*
-**المستوى:** 🔴 صعب
+### 🔴 Q1: How do you structure a large Flutter project?
 
-**🇺🇸 English:**
+*س: كيف تُهيكل مشروع Flutter كبير؟*
+
+I use feature-first structure with `Clean Architecture` layers per feature (data/domain/presentation). Shared code lives in `core/`. I use dependency injection (`get_it` + `injectable`), repository pattern to abstract data sources, and use cases for business logic.
+
+أعتمد على هيكلة قائمة على الميزات (Feature-first) مع تطبيق طبقات الـ `Clean Architecture` لكل ميزة (data/domain/presentation). الكود المشترك أضعه في مجلد `core/`. أستخدم الـ Dependency Injection (عن طريق `get_it` و `injectable`)، وأطبق نمط الـ Repository لعزل مصادر البيانات، والـ Use cases للـ Business logic.
+
+> [!IMPORTANT]
+> The CTO asks this more than any other question - prepare a real project example.
+>
+> يسأل الـ CTO هذا السؤال أكثر من أي سؤال آخر - جهّز مثالًا من مشروع حقيقي.
+
+---
+
+### 🔴 Q2: What is `Clean Architecture` and how does it apply to Flutter?
+
+*س: ما هي الـ `Clean Architecture` وكيف تُطبّق في Flutter؟*
+
+`Clean Architecture` has 3 layers: Presentation (`widgets` + state), Domain (use cases + entities, no Flutter dependencies), Data (repositories + APIs + local DB). Dependency rule: outer layers depend on inner, never reverse. This makes business logic framework-agnostic and testable.
+
+الـ `Clean Architecture` تتكون من 3 طبقات: Presentation (للـ `widgets` والـ state)، Domain (للـ use cases والـ entities وليس فيها أي اعتماد على Flutter)، و Data (للـ repositories والـ APIs وقواعد البيانات المحلية). قاعدة الاعتمادية: الطبقات الخارجية تعتمد على الداخلية، ولا تنعكس أبدًا. هذا يجعل الـ Business logic مستقلًا عن إطار العمل وقابلًا للاختبار (testable).
+
+---
+
+### 🔴 Q3: How do you handle feature modularity or micro-frontends in Flutter?
+
+*س: كيف تتعامل مع الـ Feature modularity أو الـ Micro-frontends في Flutter؟*
+
 Using Flutter's package/plugin system to split features into separate Dart packages within a monorepo (using `melos`). Each feature package is self-contained with its own state, navigation, and tests. The main app just composes them.
 
-**🇪🇬 عربي:**
-عن طريق استخدام نظام الـ packages في Flutter لتقسيم الميزات لحزم Dart منفصلة جوه Monorepo (بواسطة أدوات زي `melos`). كل حزمة ميزة (feature package) بتكون مستقلة تماماً بحالتها (state)، والـ navigation، والاختبارات بتاعتها. والتطبيق الرئيسي مجرد بيجمعهم (composes) مع بعض.
+عن طريق استخدام نظام الـ packages في Flutter لتقسيم الميزات إلى حزم Dart منفصلة داخل Monorepo (بواسطة أدوات مثل `melos`). كل حزمة ميزة (feature package) تكون مستقلة تمامًا بحالتها (state)، والـ navigation، والاختبارات الخاصة بها. والتطبيق الرئيسي يجمعها (composes) معًا.
 
-> 💡 **نصيحة:** ده سؤال للشركات الكبيرة — اذكر إنك على دراية حتى لو ماطبقتوش.
-
----
-
-### Q4: How do you manage dependency injection in Flutter?
-
-*س: إزاي بتدير الـ Dependency Injection في Flutter؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-I use `get_it` as the service locator with `injectable` for code generation. This allows lazy/singleton registration, easy mocking in tests, and avoids passing dependencies through the widget tree.
-
-**🇪🇬 عربي:**
-بستخدم `get_it` كـ Service locator مع مكتبة `injectable` لتوليد الكود. ده بيسمح بتسجيل الـ dependencies بشكل lazy أو كـ singletons، وبيسهل عملية الـ mocking في الاختبارات، وبيمنع الحاجة لتمرير الـ dependencies عبر الـ widget tree.
+> [!TIP]
+> This is a question for large companies - show you're familiar with it even if you haven't implemented it.
+>
+> هذا سؤال للشركات الكبيرة - أظهر أنك على دراية به حتى لو لم تطبّقه.
 
 ---
 
-## 5. Performance
+### 🟡 Q4: How do you manage dependency injection in Flutter?
 
-### Q1: How do you detect and fix performance issues in Flutter?
+*س: كيف تدير الـ Dependency Injection في Flutter؟*
 
-*س: إزاي بتكتشف وتعالج مشاكل الأداء في Flutter؟*
-**المستوى:** 🔴 صعب
+I use `get_it` as the service locator with `injectable` for code generation. This allows lazy/singleton registration, easy mocking in tests, and avoids passing dependencies through the `widget tree`.
 
-**🇺🇸 English:**
-I use Flutter DevTools — the Performance tab shows frame times, the Widget Inspector shows rebuild counts, and the Memory tab detects leaks. I look for janky frames (>16ms), excessive rebuilds, and expensive operations on the main isolate.
-
-**🇪🇬 عربي:**
-بستخدم Flutter DevTools — تبويبة Performance بتعرض وقت الفريمات، والـ Widget Inspector بيوضح عدد مرات الـ rebuilds، وتبويبة Memory بتكتشف الـ leaks. بدور على الفريمات اللي بتعلق (أكتر من 16 مللي ثانية)، والـ rebuilds المبالغ فيها، والعمليات التقيلة اللي بتحصل على الـ main isolate عشان أعالجها.
-
-> 💡 **نصيحة:** اذكر DevTools دايماً — يظهر إنك شغلت على apps حقيقية.
+أستخدم `get_it` كـ Service locator مع مكتبة `injectable` لتوليد الكود. هذا يتيح تسجيل الـ dependencies بشكل lazy أو كـ singletons، ويسهّل عملية الـ mocking في الاختبارات، ويمنع الحاجة لتمرير الـ dependencies عبر الـ `widget tree`.
 
 ---
 
-### Q2: What causes jank in Flutter and how do you prevent it?
+## 5. Performance / الأداء
 
-*س: إيه اللي بيسبب التقطيع (Jank) في Flutter وإزاي تمنعه؟*
-**المستوى:** 🟡 متوسط
+### 🔴 Q1: How do you detect and fix performance issues in Flutter?
 
-**🇺🇸 English:**
-Jank happens when frames take >16ms to render. Causes: heavy computation on main isolate, excessive widget rebuilds, shader compilation (solved by Impeller), large images not cached. Prevention: use isolates, const widgets, `precacheImage`, and cache expensive results.
+*س: كيف تكتشف وتعالج مشاكل الأداء في Flutter؟*
 
-**🇪🇬 عربي:**
-التقطيع بيحصل لما الفريم ياخد أكتر من 16ms عشان يترسم. الأسباب: عمليات تقيلة على الـ main isolate، إعادة بناء (rebuilds) كتير للـ widgets، ترجمة الـ shaders (اتحلت بـ Impeller)، أو صور كبيرة مش معمولها cache. الوقاية: استخدم Isolates، و `const` widgets، و `precacheImage`، واعمل cache للنتائج اللي بتاخد وقت في حسابها.
+I use Flutter `DevTools` - the Performance tab shows frame times, the `Widget Inspector` shows rebuild counts, and the Memory tab detects leaks. I look for janky frames (>16ms), excessive rebuilds, and expensive operations on the main isolate.
 
----
+أستخدم Flutter `DevTools` - تبويبة Performance تعرض وقت الإطارات، والـ `Widget Inspector` يوضح عدد مرات الـ rebuilds، وتبويبة Memory تكتشف الـ leaks. أبحث عن الإطارات المتقطعة (أكثر من 16 مللي ثانية)، والـ rebuilds المفرطة، والعمليات الثقيلة على الـ main isolate لمعالجتها.
 
-### Q3: How do you optimize app startup time?
-
-*س: إزاي بتحسن وقت بدء تشغيل التطبيق (Startup time)؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-Defer heavy initialization using lazy singletons, avoid blocking work in `main()`, use a splash screen to hide startup, reduce initial route complexity, and ensure AOT compilation is active in release mode. Deferred loading for large features can also help.
-
-**🇪🇬 عربي:**
-بأجل التهيئة (initialization) التقيلة باستخدام lazy singletons، وبتجنب أي عمليات بتعطل الـ `main()`، وبستخدم Splash screen أصلية للموبايل، وبقلل تعقيد الواجهة الأولى (initial route). كمان بتأكد إن الـ AOT compilation شغال في وضع الـ release. التحميل المؤجل (Deferred loading) للميزات الكبيرة بيساعد جداً.
+> [!TIP]
+> Always mention `DevTools` - it shows you've worked on real apps.
+>
+> اذكر `DevTools` دائمًا - فهذا يُظهر أنك عملت على تطبيقات حقيقية.
 
 ---
 
-## 6. Testing
+### 🟡 Q2: What causes `jank` in Flutter and how do you prevent it?
 
-### Q1: What's your testing strategy for Flutter apps?
+*س: ما الذي يسبب التقطيع (`Jank`) في Flutter وكيف تمنعه؟*
 
-*س: إيه هي استراتيجيتك في اختبار (Testing) تطبيقات Flutter؟*
-**المستوى:** 🟡 متوسط
+`Jank` happens when frames take >16ms to render. Causes: heavy computation on main isolate, excessive widget rebuilds, shader compilation (solved by `Impeller`), large images not cached. Prevention: use `Isolate.run()`, const widgets, `precacheImage`, and cache expensive results.
 
-**🇺🇸 English:**
+التقطيع يحدث عندما يستغرق الإطار أكثر من 16ms للرسم. الأسباب: عمليات ثقيلة على الـ main isolate، إعادة بناء (rebuilds) كثيرة للـ widgets، تجميع الـ shaders (حُلّت بـ `Impeller`)، أو صور كبيرة بدون cache. الوقاية: استخدم `Isolate.run()`، و `const` widgets، و `precacheImage`، واحفظ النتائج المكلفة في الـ cache.
+
+---
+
+### 🟡 Q3: How do you optimize app startup time?
+
+*س: كيف تحسّن وقت بدء تشغيل التطبيق (Startup time)؟*
+
+Defer heavy initialization using `lazy singletons`, avoid blocking work in `main()`, use a splash screen to hide startup, reduce initial route complexity, and ensure `AOT compilation` is active in release mode. Deferred loading for large features can also help.
+
+أؤجل التهيئة (initialization) الثقيلة باستخدام `lazy singletons`، وأتجنب أي عمليات تعطّل الـ `main()`، وأستخدم Splash screen أصلية للهاتف، وأقلل تعقيد الواجهة الأولى (initial route). كذلك أتأكد أن الـ `AOT compilation` مفعّل في وضع الـ release. التحميل المؤجل (Deferred loading) للميزات الكبيرة يساعد كثيرًا.
+
+---
+
+## 6. Testing / الاختبارات
+
+### 🟡 Q1: What's your testing strategy for Flutter apps?
+
+*س: ما استراتيجيتك في اختبار (Testing) تطبيقات Flutter؟*
+
 I follow the testing pyramid: many unit tests (business logic/use cases), integration tests for critical user flows, and widget tests for complex UI components. I mock dependencies with `mocktail`, use `flutter_test` for widgets, and `integration_test` for E2E.
 
-**🇪🇬 عربي:**
-بتبع هرم الاختبار (Testing Pyramid): عدد كبير من الـ unit tests (للـ business logic)، و integration tests لتدفقات المستخدم الأساسية، و widget tests لمكونات الـ UI المعقدة. بستخدم `mocktail` لعمل mocks للـ dependencies، و `flutter_test` للـ widgets، و `integration_test` للـ End-to-End.
+أتبع هرم الاختبار (Testing Pyramid): عدد كبير من الـ unit tests (للـ business logic)، و integration tests لتدفقات المستخدم الأساسية، و widget tests لمكونات الـ UI المعقدة. أستخدم `mocktail` لعمل mocks للـ dependencies، و `flutter_test` للـ widgets، و `integration_test` للـ End-to-End.
 
-> 💡 **نصيحة:** الـ CTO بيسأل ده عشان يعرف هل عندك culture صح ولا لأ.
-
----
-
-### Q2: How do you test BLoC or Riverpod state management?
-
-*س: إزاي بتعمل Test للـ State management سواء BLoC أو Riverpod؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-For BLoC I use `bloc_test` which lets you emit events and assert on state sequences. For Riverpod I use ProviderContainer in tests and override providers with mocks. Both approaches test logic completely independently of the UI.
-
-**🇪🇬 عربي:**
-بالنسبة لـ BLoC بستخدم `bloc_test` اللي بتسمح بإرسال أحداث والتأكد من تسلسل الحالات (states). لـ Riverpod، بستخدم `ProviderContainer` في الاختبارات وبعمل override للـ providers بـ mocks. الطريقتين بيختبروا اللوجيك بشكل مستقل تماماً عن الـ UI.
+> [!NOTE]
+> The CTO asks this to know if you have the right testing culture.
+>
+> يسأل الـ CTO هذا ليعرف هل لديك ثقافة اختبار صحيحة أم لا.
 
 ---
 
-## 7. CI/CD & DevOps
+### 🟡 Q2: How do you test `BLoC` or `Riverpod` state management?
 
-### Q1: How do you set up CI/CD for a Flutter project?
+*س: كيف تختبر الـ State management سواء `BLoC` أو `Riverpod`؟*
 
-*س: إزاي بتجهز الـ CI/CD لمشروع Flutter؟*
-**المستوى:** 🟡 متوسط
+For `BLoC` I use `bloc_test` which lets you emit events and assert on state sequences. For `Riverpod` I use `ProviderContainer` in tests and override providers with mocks. Both approaches test logic completely independently of the UI.
 
-**🇺🇸 English:**
-I use GitHub Actions or Codemagic. Pipeline: run tests → build APK/IPA → upload to Firebase App Distribution or TestFlight. I also add code coverage gates and linting (`flutter analyze`, `dart format`). Fastlane handles signing automation.
-
-**🇪🇬 عربي:**
-بستخدم GitHub Actions أو Codemagic. مسار العمل (Pipeline): تشغيل الاختبارات ← بناء الـ APK/IPA ← الرفع على Firebase App Distribution أو TestFlight. كمان بضيف شروط للـ Code coverage والـ Linting (عن طريق `flutter analyze` و `dart format`). وبستخدم Fastlane لأتمتة التوقيع (Signing).
-
-> 💡 **نصيحة:** ده سؤال مهم جداً للـ CTO — بيظهر إنك مش بس developer، انت engineer.
+بالنسبة لـ `BLoC` أستخدم `bloc_test` التي تسمح بإرسال أحداث والتأكد من تسلسل الحالات (states). لـ `Riverpod`، أستخدم `ProviderContainer` في الاختبارات وأعمل override للـ providers بـ mocks. الطريقتان تختبران المنطق البرمجي بشكل مستقل تمامًا عن الـ UI.
 
 ---
 
-### Q2: How do you manage different environments (dev/staging/prod) in Flutter?
+## 7. CI/CD & DevOps / النشر والتكامل المستمر
 
-*س: إزاي بتدير البيئات المختلفة (Dev/Staging/Prod) في Flutter؟*
-**المستوى:** 🟡 متوسط
+### 🟡 Q1: How do you set up CI/CD for a Flutter project?
 
-**🇺🇸 English:**
-I use `--dart-define` or `flutter_dotenv` for environment variables. Different flavors (using Flutter flavors or build configs) for different app IDs, API endpoints, and signing. Each environment has its own Firebase project.
+*س: كيف تُعدّ الـ CI/CD لمشروع Flutter؟*
 
-**🇪🇬 عربي:**
-بستخدم `--dart-define` أو `flutter_dotenv` لمتغيرات البيئة (environment variables). وبستخدم Flavors مختلفة لكل بيئة عشان أفصل الـ App IDs، ونهايات الـ APIs، والتوقيع. كل بيئة بيكون ليها مشروع Firebase منفصل.
+I use GitHub Actions or Codemagic. Pipeline: run tests → build APK/IPA → upload to `Firebase App Distribution` or `TestFlight`. I also add code coverage gates and linting (`flutter analyze`, `dart format`). `Fastlane` handles signing automation.
 
----
+أستخدم GitHub Actions أو Codemagic. مسار العمل (Pipeline): تشغيل الاختبارات ← بناء الـ APK/IPA ← الرفع على `Firebase App Distribution` أو `TestFlight`. كذلك أضيف شروطًا للـ Code coverage والـ Linting (عن طريق `flutter analyze` و `dart format`). وأستخدم `Fastlane` لأتمتة التوقيع (Signing).
 
-### Q3: How do you handle app signing and release for iOS and Android?
-
-*س: إزاي بتتعامل مع توقيع التطبيق (App signing) وإصداره للـ iOS و Android؟*
-**المستوى:** 🟡 متوسط
-
-**🇺🇸 English:**
-Android: keystore file managed via environment variables in CI, not committed to repo. iOS: Xcode signing with provisioning profiles managed via Match (Fastlane). Both automated in CI pipeline.
-
-**🇪🇬 عربي:**
-في Android: ملف الـ keystore بيتم إدارته عبر environment variables في الـ CI، ومش بيتعمله commit في الـ repo. في iOS: بستخدم توقيع Xcode مع الـ provisioning profiles اللي بتدار عن طريق أداة Match (جوه Fastlane). العمليتين دول بيتم أتمتتهم بالكامل في الـ CI Pipeline.
+> [!IMPORTANT]
+> This is a crucial question for the CTO - it shows you're an engineer, not just a developer.
+>
+> هذا سؤال مهم جدًا للـ CTO - يُظهر أنك لست مجرد مطوّر، بل مهندس.
 
 ---
 
-## 8. Vision & Soft Skills
+### 🟡 Q2: How do you manage different environments (dev/staging/prod) in Flutter?
 
-### Q1: Where do you see Flutter in 3 years?
+*س: كيف تدير البيئات المختلفة (Dev/Staging/Prod) في Flutter؟*
 
-*س: شايف Flutter فين كمان 3 سنين؟*
-**المستوى:** 🟡 متوسط
+I use `--dart-define` or `flutter_dotenv` for environment variables. Different flavors (using Flutter flavors or `build` configs) for different app IDs, API endpoints, and signing. Each environment has its own Firebase project.
 
-**🇺🇸 English:**
-Flutter will likely dominate cross-platform including desktop and embedded. With Wasm (WebAssembly) support maturing, Flutter Web performance gaps are closing. I see it becoming the default choice for teams wanting one codebase across all platforms.
-
-**🇪🇬 عربي:**
-Flutter غالباً هيسيطر على تطوير الـ cross-platform بما في ذلك الديسكتوب والأنظمة المدمجة (embedded). مع نضوج دعم Wasm (WebAssembly)، أداء الـ Web بيتحسن جداً. شايف إنه هيكون الخيار الافتراضي للفرق اللي عايزة كود بيز (codebase) واحد لكل المنصات.
-
-> 💡 **نصيحة:** الـ CTO بيسأل ده عشان يعرف هل انت بتفكر strategy ولا بس بتكود.
+أستخدم `--dart-define` أو `flutter_dotenv` لمتغيرات البيئة (`environment variables`). وأستخدم Flavors مختلفة لكل بيئة لفصل الـ App IDs، ونقاط نهاية الـ APIs، والتوقيع. كل بيئة لها مشروع Firebase منفصل.
 
 ---
 
-### Q2: How do you stay up to date with Flutter and Dart?
+### 🟡 Q3: How do you handle app signing and release for iOS and Android?
 
-*س: إزاي بتفضل متابع أحدث التطورات في Flutter و Dart؟*
-**المستوى:** 🟢 سهل
+*س: كيف تتعامل مع توقيع التطبيق (App signing) وإصداره للـ iOS و Android؟*
 
-**🇺🇸 English:**
-I follow flutter.dev, the Flutter GitHub repo, FlutterDev subreddit, and creators like Remi Rousselet (Riverpod author). I also build small projects to try new features, and contribute to open source when possible.
+Android: `keystore` file managed via `environment variables` in CI, not committed to repo. iOS: `Xcode` signing with `provisioning profiles` managed via `Match` (`Fastlane`). Both automated in CI pipeline.
 
-**🇪🇬 عربي:**
-بتابع موقع flutter.dev، ومستودع Flutter على GitHub، و Subreddit بتاع FlutterDev، وصناع المحتوى والخبراء زي Remi Rousselet (مؤلف Riverpod). كمان ببني مشاريع صغيرة عشان أجرب الميزات الجديدة، وبحاول أساهم في الـ Open Source لما بقدر.
-
-> 💡 **نصيحة:** اذكر أسماء محددة — يظهر إنك فعلاً متابع.
+في Android: ملف الـ `keystore` تتم إدارته عبر `environment variables` في الـ CI، ولا يُرفع في الـ repo. في iOS: أستخدم توقيع `Xcode` مع الـ `provisioning profiles` التي تُدار عن طريق أداة `Match` (داخل `Fastlane`). العمليتان مؤتمتتان بالكامل في الـ CI Pipeline.
 
 ---
 
-### Q3: Tell me about a technical decision you made that you later regretted — what did you learn?
+## 8. Vision & Soft Skills / الرؤية والمهارات الشخصية
 
-*س: كلمني عن قرار تقني أخدته وبعدين ندمت عليه — وإيه اللي اتعلمته؟*
-**المستوى:** 🟡 متوسط
+### 🟡 Q1: Where do you see Flutter in 3 years?
 
-**🇺🇸 English:**
-This is a self-awareness question. Be honest — pick a real example (e.g. chose GetX early in a project, later migrated to Riverpod due to scalability issues). Show that you learned from it and can make better architectural decisions now.
+*س: أين ترى Flutter بعد 3 سنوات؟*
 
-**🇪🇬 عربي:**
-ده سؤال بيقيس الوعي الذاتي. خليك صادق واختار مثال حقيقي (زي مثلاً اختيار GetX في بداية مشروع وبعدين اضطريت تنقل لـ Riverpod بسبب مشاكل في التوسع). وضح إنك اتعلمت من الموقف وإنك بقيت قادر تاخد قرارات معمارية (architectural decisions) أحسن دلوقتي.
+Flutter will likely dominate cross-platform including desktop and embedded. With `Wasm` (`WebAssembly`) support maturing, Flutter Web performance gaps are closing. I see it becoming the default choice for teams wanting one codebase across all platforms.
 
-> 💡 **نصيحة:** الـ CTO مش بيدور على حد مكملش، بيدور على حد بيتعلم.
+على الأرجح سيسيطر Flutter على تطوير الـ cross-platform بما في ذلك سطح المكتب والأنظمة المدمجة (embedded). مع نضوج دعم `Wasm` (`WebAssembly`)، يتحسن أداء الـ Web كثيرًا. أرى أنه سيصبح الخيار الافتراضي للفرق التي تريد قاعدة كود (codebase) واحدة لجميع المنصات.
+
+> [!NOTE]
+> The CTO asks this to see if you think strategically, not just functionally.
+>
+> يسأل الـ CTO هذا ليعرف هل تفكر بشكل استراتيجي أم وظيفي فقط.
 
 ---
 
-### Q4: How would you mentor junior Flutter developers on your team?
+### 🟢 Q2: How do you stay up to date with Flutter and Dart?
 
-*س: إزاي هتوجه (Mentor) مطورين Flutter الجونيورز في فريقك؟*
-**المستوى:** 🟡 متوسط
+*س: كيف تظل مطّلعًا على أحدث التطورات في Flutter و Dart؟*
 
-**🇺🇸 English:**
+I follow flutter.dev, the Flutter GitHub repo, FlutterDev subreddit, and creators like Remi Rousselet (`Riverpod` author). I also build small projects to try new features, and contribute to open source when possible.
+
+أتابع موقع flutter.dev، ومستودع Flutter على GitHub، و Subreddit الخاص بـ FlutterDev، وصنّاع المحتوى والخبراء مثل Remi Rousselet (مؤلف `Riverpod`). كذلك أبني مشاريع صغيرة لتجربة الميزات الجديدة، وأحاول المساهمة في المصادر المفتوحة عندما أستطيع.
+
+> [!TIP]
+> Mention specific names - it shows you actually follow the community.
+>
+> اذكر أسماء محددة - فهذا يُظهر أنك تتابع المجتمع فعلًا.
+
+---
+
+### 🟡 Q3: Tell me about a technical decision you made that you later regretted - what did you learn?
+
+*س: حدّثني عن قرار تقني اتخذته ثم ندمت عليه - وماذا تعلّمت؟*
+
+This is a self-awareness question. Be honest - pick a real example (e.g. chose `GetX` early in a project, later migrated to `Riverpod` due to scalability issues). Show that you learned from it and can make better architectural decisions now.
+
+هذا سؤال يقيس الوعي الذاتي. كن صادقًا واختر مثالًا حقيقيًا (مثل اختيار `GetX` في بداية مشروع ثم الاضطرار للانتقال إلى `Riverpod` بسبب مشاكل في التوسع). وضّح أنك تعلّمت من الموقف وأنك أصبحت قادرًا على اتخاذ قرارات معمارية (architectural decisions) أفضل الآن.
+
+> [!NOTE]
+> The CTO isn't looking for someone perfect, they want someone who learns from mistakes.
+>
+> الـ CTO لا يبحث عن شخص مثالي، بل يبحث عمّن يتعلّم من أخطائه.
+
+---
+
+### 🟡 Q4: How would you mentor junior Flutter developers on your team?
+
+*س: كيف ستوجّه (Mentor) مطوري Flutter المبتدئين في فريقك؟*
+
 Code reviews with explanations (not just corrections), pair programming sessions, internal wikis with architecture decisions, encouraging questions, and assigning ownership of small features to build confidence.
 
-**🇪🇬 عربي:**
-من خلال مراجعة الكود (Code reviews) مع تقديم شروحات (مش مجرد تصحيح)، وجلسات برمجة زوجية (Pair programming)، وعمل ويكيبيديا داخلية للقرارات المعمارية. كمان عن طريق تشجيعهم على طرح الأسئلة، وإعطائهم مسؤولية ميزات صغيرة عشان يبنوا ثقتهم بنفسهم.
+من خلال مراجعة الكود (Code reviews) مع تقديم شروحات (وليس مجرد تصحيح)، وجلسات البرمجة الزوجية (Pair programming)، وإنشاء ويكي داخلية للقرارات المعمارية. كذلك عن طريق تشجيعهم على طرح الأسئلة، وإعطائهم مسؤولية ميزات صغيرة لبناء ثقتهم بأنفسهم.
 
-> 💡 **نصيحة:** حتى لو junior دلوقتي، إجابة كده بتظهر إنك team player.
+> [!TIP]
+> Even if you're a junior now, answering like this shows you're a team player.
+>
+> حتى لو كنت مبتدئًا الآن، إجابة كهذه تُظهر أنك لاعب فريق.
 
 ---
+
 *تم إعداد هذا الملف كمرجع للتحضير لمقابلات الـ CTO / Senior Flutter Developer*
+
+---
+
+## ⭐ Support This Guide / ادعم هذا المرجع
+
+If this guide helped you prepare for your interview or level up your Flutter knowledge, consider giving it a **star** ⭐ - it takes 2 seconds and means a lot!
+
+إذا أفادك هذا الدليل في التحضير لمقابلتك أو تطوير معرفتك بـ Flutter، لا تتردد في منحه **Star** ⭐ - لن يأخذ منك سوى ثانيتين وسيحدث فرقًا كبيرًا!
+
+> **Share it** with a fellow Flutter developer who's preparing for interviews - you might make their day.
+>
+> **شاركه** مع أي مطوّر Flutter يستعد لمقابلة - قد تغيّر مساره.
