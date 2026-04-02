@@ -29,7 +29,7 @@
 
 Flutter 3.x brought `Impeller` as the default rendering engine on iOS (and Android in 2024+), multi-view support, better Material 3, and Dart 3 with `records` & `patterns`. I follow flutter.dev release notes, the official blog, and Flutter Engage recaps.
 
-إصدار Flutter 3.x قدّم `Impeller` كمحرك الرسوميات الأساسي في iOS (وفي Android من 2024+)، ودعم الـ multi-view، وتحديثات Material 3، بالإضافة إلى Dart 3 بميزاتها مثل `records` و `patterns`. أتابع التحديثات من خلال مراجعة الـ release notes على موقع flutter.dev، والمدونة الرسمية، وملخصات مؤتمرات Flutter.
+إصدار Flutter 3.x قدّم `Impeller` كمحرك الرسوميات الأساسي في iOS (وفي Android من 2024+)، ودعم الـ multi-view، وتحديثات Material 3، بالإضافة إلى Dart 3 بميزاتها مثل `records` و `patterns`. أتابع التحديثات من خلال مراجعة الـ release notes على موقع flutter.dev‎، والمدونة الرسمية، وملخصات مؤتمرات Flutter‎.
 
 > [!IMPORTANT]
 > The CTO asks this to see if you keep up - always mention `Impeller` and Dart 3.
@@ -44,7 +44,7 @@ Flutter 3.x brought `Impeller` as the default rendering engine on iOS (and Andro
 
 `Stateless` `widgets` are immutable - rebuild only when parent changes. `Stateful` `widgets` hold mutable state via a `State object` that persists across rebuilds. I use `Stateless` for pure UI display and `Stateful` only when the widget manages its own local state.
 
-الـ `Stateless` `widgets` غير قابلة للتغيير (Immutable) ويُعاد بناؤها (rebuild) فقط إذا تغيّر الـ widget الأب. أما الـ `Stateful` `widgets` فتحتفظ بحالة متغيرة (Mutable state) عن طريق كائن State يبقى موجودًا بين كل rebuild. أستخدم الـ `Stateless` لعرض الـ UI فقط، والـ `Stateful` عندما يحتاج الـ widget إلى إدارة حالته الداخلية.
+الـ `Stateless` `widgets` غير قابلة للتغيير (Immutable)‎ ويُعاد بناؤها (rebuild)‎ فقط إذا تغيّر الـ widget الأب. أما الـ `Stateful` `widgets` فتحتفظ بحالة متغيرة (Mutable state)‎ عن طريق كائن State يبقى موجودًا بين كل rebuild. أستخدم الـ `Stateless` لعرض الـ UI فقط، والـ `Stateful` عندما يحتاج الـ widget إلى إدارة حالته الداخلية.
 
 > [!NOTE]
 > They might ask next: "**Why not always use `Stateful`?**" - Answer: unnecessary overhead and complexity.
@@ -59,7 +59,7 @@ Flutter 3.x brought `Impeller` as the default rendering engine on iOS (and Andro
 
 The `widget tree` is the immutable blueprint. The `element tree` is the live instance that connects `widgets` to their `render objects` and holds state. The `render tree` handles actual layout and painting. Flutter reconciles changes by comparing widget trees and only updating changed elements.
 
-الـ `Widget tree` هي المخطط الأساسي غير القابل للتغيير. الـ `Element tree` هي النسخة الحية التي تربط الـ `widgets` بكائنات الـ render وتحتفظ بالحالة (State). أما الـ `Render tree` فهي المسؤولة عن حساب المساحات (Layout) والرسم الفعلي (Painting) على الشاشة. يقوم Flutter بالتحديثات عن طريق مقارنة الـ widget trees وتحديث الـ elements التي تغيّرت فقط.
+الـ `Widget tree` هي المخطط الأساسي غير القابل للتغيير. الـ `Element tree` هي النسخة الحية التي تربط الـ `widgets` بكائنات الـ render وتحتفظ بالحالة (State)‎. أما الـ `Render tree` فهي المسؤولة عن حساب المساحات (Layout)‎ والرسم الفعلي (Painting)‎ على الشاشة. يقوم Flutter بالتحديثات عن طريق مقارنة الـ widget trees وتحديث الـ elements التي تغيّرت فقط.
 
 > [!IMPORTANT]
 > This question separates a mid-level from a senior developer - make sure you understand it.
@@ -74,7 +74,7 @@ The `widget tree` is the immutable blueprint. The `element tree` is the live ins
 
 Flutter goes: `Build` → `Layout` → `Paint` → `Composite`. Widgets build to elements, elements create/update `render objects`, the `render tree` computes layout (constraints flow down, sizes flow up), then paints to layers, and `Skia`/`Impeller` composites them to the screen via the GPU.
 
-تسير العملية كالتالي: `Build` → `Layout` → `Paint` → `Composite`. تُبنى الـ Widgets إلى elements، وتُنشئ الـ elements أو تُحدّث الـ `render objects`، ثم تحسب الـ `render tree` الـ layout (القيود تنزل للأسفل، والمقاسات تصعد للأعلى)، ثم يتم الرسم على طبقات (Layers)، وفي النهاية يقوم `Skia` أو `Impeller` بتجميع الطبقات ورسمها على الشاشة عبر كارت الشاشة (GPU).
+تسير العملية كالتالي: `Build` → `Layout` → `Paint` → `Composite`. تُبنى الـ Widgets إلى elements، وتُنشئ الـ elements أو تُحدّث الـ `render objects`، ثم تحسب الـ `render tree` الـ layout (القيود تنزل للأسفل، والمقاسات تصعد للأعلى)، ثم يتم الرسم على طبقات (Layers)، وفي النهاية يقوم `Skia` أو `Impeller` بتجميع الطبقات ورسمها على الشاشة عبر كارت الشاشة (GPU)‎.
 
 ---
 
@@ -84,7 +84,7 @@ Flutter goes: `Build` → `Layout` → `Paint` → `Composite`. Widgets build to
 
 `Impeller` is Flutter's new rendering engine replacing `Skia`. It pre-compiles shaders at build time, eliminating the `jank` caused by runtime shader compilation. Result: smoother animations, especially on first run.
 
-`Impeller` هو محرك الرسوميات الجديد لـ Flutter الذي يستبدل `Skia`. ميزته الأساسية أنه يُجمّع الـ shaders وقت البناء (build time)، مما يقضي تمامًا على التقطيع (`jank`) الذي كان يحدث أثناء تشغيل الـ shaders في الـ runtime. النتيجة: رسوم متحركة أسرع وأكثر سلاسة، خاصة عند أول تشغيل للتطبيق.
+`Impeller` هو محرك الرسوميات الجديد لـ Flutter الذي يستبدل `Skia`. ميزته الأساسية أنه يُجمّع الـ shaders وقت البناء (build time)‎، مما يقضي تمامًا على التقطيع (`jank`)‎ الذي كان يحدث أثناء تشغيل الـ shaders في الـ runtime. النتيجة: رسوم متحركة أسرع وأكثر سلاسة، خاصة عند أول تشغيل للتطبيق.
 
 > [!IMPORTANT]
 > This is a 2024-2026 question - very important to know.
@@ -99,7 +99,7 @@ Flutter goes: `Build` → `Layout` → `Paint` → `Composite`. Widgets build to
 
 I use `go_router` for declarative navigation with deep link support, URL-based routing, and nested navigation. It handles redirects (auth guards), query params, and named routes cleanly. For very large apps I also consider shell routes for persistent bottom nav.
 
-أستخدم مكتبة `go_router` لأنها توفر طريقة تعريفية (declarative) للـ navigation تدعم الـ deep links والمسارات المبنية على الـ URL والـ nested navigation. تتعامل المكتبة مع الـ redirects (مثل الـ auth guards) والـ query params بشكل نظيف جدًا. وفي التطبيقات الضخمة أعتمد على الـ shell routes للحفاظ على الـ bottom nav ثابتة.
+أستخدم مكتبة `go_router` لأنها توفر طريقة تعريفية (declarative)‎ للـ navigation تدعم الـ deep links والمسارات المبنية على الـ URL والـ nested navigation. تتعامل المكتبة مع الـ redirects (مثل الـ auth guards) والـ query params بشكل نظيف جدًا. وفي التطبيقات الضخمة أعتمد على الـ shell routes للحفاظ على الـ bottom nav ثابتة.
 
 ---
 
@@ -111,7 +111,7 @@ I use `go_router` for declarative navigation with deep link support, URL-based r
 
 `Records` are anonymous immutable value types: `(String, int) user = ('Ali', 25)`. Use them to return multiple values from a function without creating a class. They support named fields `({String name, int age})` and work great with `pattern matching`.
 
-الـ `Records` هي أنواع بيانات مجهولة الاسم وغير قابلة للتغيير، مثل `(String, int) user = ('Ali', 25)`. أستخدمها لإرجاع أكثر من قيمة من دالة (function) دون الحاجة لإنشاء class مخصص. تدعم الحقول المسماة وتعمل بشكل ممتاز مع الـ `pattern matching`.
+الـ `Records` هي أنواع بيانات مجهولة الاسم وغير قابلة للتغيير، مثل ‎`(String, int) user = ('Ali', 25)`‎. أستخدمها لإرجاع أكثر من قيمة من دالة (function)‎ دون الحاجة لإنشاء class مخصص. تدعم الحقول المسماة وتعمل بشكل ممتاز مع الـ `pattern matching`.
 
 > [!IMPORTANT]
 > Dart 3 is the biggest language change in years - you must know `Records` and `Patterns` well.
@@ -126,7 +126,7 @@ I use `go_router` for declarative navigation with deep link support, URL-based r
 
 `Sealed classes` restrict subclassing to the same file, enabling exhaustive switch. `Pattern matching` lets you destructure and match on types in switch expressions. Together they enable algebraic data types - great for state modeling (Loading, Success, Error).
 
-الـ `Sealed classes` تمنع الوراثة منها خارج نفس الملف، مما يتيح إجراء فحص شامل (exhaustive switch). الـ `Pattern matching` يتيح لك تفكيك البيانات (destructure) ومطابقة الأنواع داخل الـ switch expressions. معًا، يوفران ميزة الـ algebraic data types الممتازة في نمذجة الحالات (مثل Loading, Success, Error).
+الـ `Sealed classes` تمنع الوراثة منها خارج نفس الملف، مما يتيح إجراء فحص شامل (exhaustive switch)‎. الـ `Pattern matching` يتيح لك تفكيك البيانات (destructure)‎ ومطابقة الأنواع داخل الـ switch expressions. معًا، يوفران ميزة الـ algebraic data types الممتازة في نمذجة الحالات (مثل Loading, Success, Error).
 
 ---
 
@@ -136,7 +136,7 @@ I use `go_router` for declarative navigation with deep link support, URL-based r
 
 Future is a single async value. Stream is a sequence of async values. async/await is syntactic sugar over Futures. I use Streams for real-time data (WebSocket, Firebase), and Futures for one-off calls (HTTP). StreamController is used for custom streams.
 
-الـ Future يمثل قيمة واحدة ستأتي في المستقبل (async). الـ Stream يمثل سلسلة مستمرة من القيم. أما `async/await` فهي مجرد صياغة مختصرة تسهّل التعامل مع الـ Futures. أستخدم الـ Streams للبيانات اللحظية (مثل WebSockets أو Firebase)، والـ Futures للطلبات التي تحدث مرة واحدة (مثل الـ HTTP).
+الـ Future يمثل قيمة واحدة ستأتي في المستقبل (async)‎. الـ Stream يمثل سلسلة مستمرة من القيم. أما `async/await` فهي مجرد صياغة مختصرة تسهّل التعامل مع الـ Futures. أستخدم الـ Streams للبيانات اللحظية (مثل WebSockets أو Firebase)، والـ Futures للطلبات التي تحدث مرة واحدة (مثل الـ HTTP).
 
 ---
 
@@ -146,7 +146,7 @@ Future is a single async value. Stream is a sequence of async values. async/awai
 
 Dart's `sound null safety` means non-nullable types can never be null. `late` defers initialization - useful for variables initialized after declaration (e.g. in initState). `late final` adds the guarantee it's set only once.
 
-نظام الـ `Sound null safety` في Dart يضمن أن المتغيرات غير القابلة للـ null لا يمكنها أبدًا أن تأخذ قيمة null. كلمة `late` تؤجل إعطاء قيمة للمتغير (initialization) إلى وقت لاحق، وهذا مفيد جدًا للمتغيرات التي تأخذ قيمتها بعد تعريفها (مثل في `initState`). استخدام `late final` يضيف ضمانًا بأن المتغير يأخذ قيمته مرة واحدة فقط.
+نظام الـ `Sound null safety` في Dart يضمن أن المتغيرات غير القابلة للـ null لا يمكنها أبدًا أن تأخذ قيمة null. كلمة `late` تؤجل إعطاء قيمة للمتغير (initialization)‎ إلى وقت لاحق، وهذا مفيد جدًا للمتغيرات التي تأخذ قيمتها بعد تعريفها (مثل في `initState`)‎. استخدام `late final` يضيف ضمانًا بأن المتغير يأخذ قيمته مرة واحدة فقط.
 
 ---
 
@@ -154,9 +154,9 @@ Dart's `sound null safety` means non-nullable types can never be null. `late` de
 
 *س: ما هي الـ `Isolates` في Dart وما الفرق بينها وبين الـ Threads؟*
 
-`Isolates` are Dart's concurrency model - each has its own memory heap and communicates via message passing (SendPort/ReceivePort), unlike threads which share memory. Use `compute()` or `Isolate.run()` for heavy work off the main isolate to avoid UI `jank`.
+`Isolates` are Dart's concurrency model - each has its own memory heap and communicates via message passing (SendPort/ReceivePort), unlike threads which share memory. Use ‎`compute()`‎ or ‎`Isolate.run()`‎ for heavy work off the main isolate to avoid UI `jank`.
 
-الـ `Isolates` هي طريقة Dart في التعامل مع التزامن (concurrency). كل Isolate له ذاكرته (memory heap) الخاصة ويتواصل مع غيره عن طريق إرسال الرسائل، على عكس الـ Threads التي تتشارك نفس الذاكرة. أستخدم `compute()` أو `Isolate.run()` للعمليات الثقيلة لنقلها من الـ main isolate ومنع تقطيع (`jank`) واجهة المستخدم.
+الـ `Isolates` هي طريقة Dart في التعامل مع التزامن (concurrency)‎. كل Isolate له ذاكرته (memory heap)‎ الخاصة ويتواصل مع غيره عن طريق إرسال الرسائل، على عكس الـ Threads التي تتشارك نفس الذاكرة. أستخدم ‎`compute()`‎ أو ‎`Isolate.run()`‎ للعمليات الثقيلة لنقلها من الـ main isolate ومنع تقطيع (`jank`)‎ واجهة المستخدم.
 
 > [!NOTE]
 > The CTO asks this to know if you understand why Flutter janks and how to solve it.
@@ -186,9 +186,9 @@ I've used `Provider`, `Riverpod`, `Bloc`, and `GetX`. `Riverpod` is my current p
 
 *س: كيف تتجنب الـ Widget rebuilds غير الضرورية؟*
 
-Use `const` constructors, split `widgets` into smaller ones, use Consumer/Selector to listen to specific parts of state, avoid expensive computations in `build()`, and use RepaintBoundary for isolated animations.
+Use `const` constructors, split `widgets` into smaller ones, use Consumer/Selector to listen to specific parts of state, avoid expensive computations in ‎`build()`‎, and use RepaintBoundary for isolated animations.
 
-عن طريق استخدام `const` constructors، وتقسيم الـ `widgets` الكبيرة إلى أجزاء أصغر، واستخدام `Consumer` أو `Selector` للاستماع إلى أجزاء محددة فقط من الـ state. كذلك أتجنب العمليات الحسابية المعقدة داخل دالة `build()`، وأستخدم `RepaintBoundary` لعزل الرسوم المتحركة.
+عن طريق استخدام `const` constructors، وتقسيم الـ `widgets` الكبيرة إلى أجزاء أصغر، واستخدام `Consumer` أو `Selector` للاستماع إلى أجزاء محددة فقط من الـ state. كذلك أتجنب العمليات الحسابية المعقدة داخل دالة ‎`build()`‎، وأستخدم `RepaintBoundary` لعزل الرسوم المتحركة.
 
 ---
 
@@ -198,7 +198,7 @@ Use `const` constructors, split `widgets` into smaller ones, use Consumer/Select
 
 `BLoC` separates UI from business logic. Events go in, states come out via streams. It makes logic testable independently of UI, enforces `unidirectional data flow`, and makes state transitions explicit and traceable - great for complex flows.
 
-الـ `BLoC` يفصل واجهة المستخدم (UI) عن الـ Business logic. الفكرة أن الـ Events تدخل والـ States تخرج عن طريق Streams. هذا يجعل المنطق البرمجي قابلًا للاختبار بشكل مستقل عن الـ UI، ويفرض مسارًا واحدًا للبيانات (`unidirectional data flow`)، ويجعل التغييرات في الـ state واضحة وقابلة للتتبع، مما يفيد جدًا في التطبيقات المعقدة.
+الـ `BLoC` يفصل واجهة المستخدم (UI)‎ عن الـ Business logic. الفكرة أن الـ Events تدخل والـ States تخرج عن طريق Streams. هذا يجعل المنطق البرمجي قابلًا للاختبار بشكل مستقل عن الـ UI، ويفرض مسارًا واحدًا للبيانات (`unidirectional data flow`)‎، ويجعل التغييرات في الـ state واضحة وقابلة للتتبع، مما يفيد جدًا في التطبيقات المعقدة.
 
 ---
 
@@ -208,9 +208,9 @@ Use `const` constructors, split `widgets` into smaller ones, use Consumer/Select
 
 *س: كيف تُهيكل مشروع Flutter كبير؟*
 
-I use feature-first structure with `Clean Architecture` layers per feature (data/domain/presentation). Shared code lives in `core/`. I use dependency injection (`get_it` + `injectable`), repository pattern to abstract data sources, and use cases for business logic.
+I use feature-first structure with `Clean Architecture` layers per feature (data/domain/presentation)‎. Shared code lives in `core/`. I use dependency injection (`get_it` + `injectable`), repository pattern to abstract data sources, and use cases for business logic.
 
-أعتمد على هيكلة قائمة على الميزات (Feature-first) مع تطبيق طبقات الـ `Clean Architecture` لكل ميزة (data/domain/presentation). الكود المشترك أضعه في مجلد `core/`. أستخدم الـ Dependency Injection (عن طريق `get_it` و `injectable`)، وأطبق نمط الـ Repository لعزل مصادر البيانات، والـ Use cases للـ Business logic.
+أعتمد على هيكلة قائمة على الميزات (Feature-first)‎ مع تطبيق طبقات الـ `Clean Architecture` لكل ميزة (data/domain/presentation)‎. الكود المشترك أضعه في مجلد `core/`. أستخدم الـ Dependency Injection (عن طريق `get_it` و `injectable`)، وأطبق نمط الـ Repository لعزل مصادر البيانات، والـ Use cases للـ Business logic.
 
 > [!IMPORTANT]
 > The CTO asks this more than any other question - prepare a real project example.
@@ -225,7 +225,7 @@ I use feature-first structure with `Clean Architecture` layers per feature (data
 
 `Clean Architecture` has 3 layers: Presentation (`widgets` + state), Domain (use cases + entities, no Flutter dependencies), Data (repositories + APIs + local DB). Dependency rule: outer layers depend on inner, never reverse. This makes business logic framework-agnostic and testable.
 
-الـ `Clean Architecture` تتكون من 3 طبقات: Presentation (للـ `widgets` والـ state)، Domain (للـ use cases والـ entities وليس فيها أي اعتماد على Flutter)، و Data (للـ repositories والـ APIs وقواعد البيانات المحلية). قاعدة الاعتمادية: الطبقات الخارجية تعتمد على الداخلية، ولا تنعكس أبدًا. هذا يجعل الـ Business logic مستقلًا عن إطار العمل وقابلًا للاختبار (testable).
+الـ `Clean Architecture` تتكون من 3 طبقات: Presentation (للـ `widgets` والـ state)، Domain (للـ use cases والـ entities وليس فيها أي اعتماد على Flutter)‎، و Data (للـ repositories والـ APIs وقواعد البيانات المحلية). قاعدة الاعتمادية: الطبقات الخارجية تعتمد على الداخلية، ولا تنعكس أبدًا. هذا يجعل الـ Business logic مستقلًا عن إطار العمل وقابلًا للاختبار (testable)‎.
 
 ---
 
@@ -233,9 +233,9 @@ I use feature-first structure with `Clean Architecture` layers per feature (data
 
 *س: كيف تتعامل مع الـ Feature modularity أو الـ Micro-frontends في Flutter؟*
 
-Using Flutter's package/plugin system to split features into separate Dart packages within a monorepo (using `melos`). Each feature package is self-contained with its own state, navigation, and tests. The main app just composes them.
+Using Flutter's package/plugin system to split features into separate Dart packages within a monorepo (using `melos`)‎. Each feature package is self-contained with its own state, navigation, and tests. The main app just composes them.
 
-عن طريق استخدام نظام الـ packages في Flutter لتقسيم الميزات إلى حزم Dart منفصلة داخل Monorepo (بواسطة أدوات مثل `melos`). كل حزمة ميزة (feature package) تكون مستقلة تمامًا بحالتها (state)، والـ navigation، والاختبارات الخاصة بها. والتطبيق الرئيسي يجمعها (composes) معًا.
+عن طريق استخدام نظام الـ packages في Flutter لتقسيم الميزات إلى حزم Dart منفصلة داخل Monorepo (بواسطة أدوات مثل `melos`)‎. كل حزمة ميزة (feature package)‎ تكون مستقلة تمامًا بحالتها (state)‎، والـ navigation، والاختبارات الخاصة بها. والتطبيق الرئيسي يجمعها (composes)‎ معًا.
 
 > [!TIP]
 > This is a question for large companies - show you're familiar with it even if you haven't implemented it.
@@ -275,9 +275,9 @@ I use Flutter `DevTools` - the Performance tab shows frame times, the `Widget In
 
 *س: ما الذي يسبب التقطيع (`Jank`) في Flutter وكيف تمنعه؟*
 
-`Jank` happens when frames take >16ms to render. Causes: heavy computation on main isolate, excessive widget rebuilds, shader compilation (solved by `Impeller`), large images not cached. Prevention: use `Isolate.run()`, const widgets, `precacheImage`, and cache expensive results.
+`Jank` happens when frames take >16ms to render. Causes: heavy computation on main isolate, excessive widget rebuilds, shader compilation (solved by `Impeller`), large images not cached. Prevention: use ‎`Isolate.run()`‎, const widgets, `precacheImage`, and cache expensive results.
 
-التقطيع يحدث عندما يستغرق الإطار أكثر من 16ms للرسم. الأسباب: عمليات ثقيلة على الـ main isolate، إعادة بناء (rebuilds) كثيرة للـ widgets، تجميع الـ shaders (حُلّت بـ `Impeller`)، أو صور كبيرة بدون cache. الوقاية: استخدم `Isolate.run()`، و `const` widgets، و `precacheImage`، واحفظ النتائج المكلفة في الـ cache.
+التقطيع يحدث عندما يستغرق الإطار أكثر من 16ms للرسم. الأسباب: عمليات ثقيلة على الـ main isolate، إعادة بناء (rebuilds)‎ كثيرة للـ widgets، تجميع الـ shaders (حُلّت بـ `Impeller`)، أو صور كبيرة بدون cache. الوقاية: استخدم ‎`Isolate.run()`‎، و `const` widgets، و `precacheImage`، واحفظ النتائج المكلفة في الـ cache.
 
 ---
 
@@ -285,9 +285,9 @@ I use Flutter `DevTools` - the Performance tab shows frame times, the `Widget In
 
 *س: كيف تحسّن وقت بدء تشغيل التطبيق (Startup time)؟*
 
-Defer heavy initialization using `lazy singletons`, avoid blocking work in `main()`, use a splash screen to hide startup, reduce initial route complexity, and ensure `AOT compilation` is active in release mode. Deferred loading for large features can also help.
+Defer heavy initialization using `lazy singletons`, avoid blocking work in ‎`main()`‎, use a splash screen to hide startup, reduce initial route complexity, and ensure `AOT compilation` is active in release mode. Deferred loading for large features can also help.
 
-أؤجل التهيئة (initialization) الثقيلة باستخدام `lazy singletons`، وأتجنب أي عمليات تعطّل الـ `main()`، وأستخدم Splash screen أصلية للهاتف، وأقلل تعقيد الواجهة الأولى (initial route). كذلك أتأكد أن الـ `AOT compilation` مفعّل في وضع الـ release. التحميل المؤجل (Deferred loading) للميزات الكبيرة يساعد كثيرًا.
+أؤجل التهيئة (initialization)‎ الثقيلة باستخدام `lazy singletons`، وأتجنب أي عمليات تعطّل الـ ‎`main()`‎، وأستخدم Splash screen أصلية للهاتف، وأقلل تعقيد الواجهة الأولى (initial route)‎. كذلك أتأكد أن الـ `AOT compilation` مفعّل في وضع الـ release. التحميل المؤجل (Deferred loading)‎ للميزات الكبيرة يساعد كثيرًا.
 
 ---
 
@@ -299,7 +299,7 @@ Defer heavy initialization using `lazy singletons`, avoid blocking work in `main
 
 I follow the testing pyramid: many unit tests (business logic/use cases), integration tests for critical user flows, and widget tests for complex UI components. I mock dependencies with `mocktail`, use `flutter_test` for widgets, and `integration_test` for E2E.
 
-أتبع هرم الاختبار (Testing Pyramid): عدد كبير من الـ unit tests (للـ business logic)، و integration tests لتدفقات المستخدم الأساسية، و widget tests لمكونات الـ UI المعقدة. أستخدم `mocktail` لعمل mocks للـ dependencies، و `flutter_test` للـ widgets، و `integration_test` للـ End-to-End.
+أتبع هرم الاختبار (Testing Pyramid)‎: عدد كبير من الـ unit tests (للـ business logic)، و integration tests لتدفقات المستخدم الأساسية، و widget tests لمكونات الـ UI المعقدة. أستخدم `mocktail` لعمل mocks للـ dependencies، و `flutter_test` للـ widgets، و `integration_test` للـ End-to-End‎.
 
 > [!NOTE]
 > The CTO asks this to know if you have the right testing culture.
@@ -314,7 +314,7 @@ I follow the testing pyramid: many unit tests (business logic/use cases), integr
 
 For `BLoC` I use `bloc_test` which lets you emit events and assert on state sequences. For `Riverpod` I use `ProviderContainer` in tests and override providers with mocks. Both approaches test logic completely independently of the UI.
 
-بالنسبة لـ `BLoC` أستخدم `bloc_test` التي تسمح بإرسال أحداث والتأكد من تسلسل الحالات (states). لـ `Riverpod`، أستخدم `ProviderContainer` في الاختبارات وأعمل override للـ providers بـ mocks. الطريقتان تختبران المنطق البرمجي بشكل مستقل تمامًا عن الـ UI.
+بالنسبة لـ `BLoC` أستخدم `bloc_test` التي تسمح بإرسال أحداث والتأكد من تسلسل الحالات (states)‎. لـ `Riverpod`، أستخدم `ProviderContainer` في الاختبارات وأعمل override للـ providers بـ mocks. الطريقتان تختبران المنطق البرمجي بشكل مستقل تمامًا عن الـ UI‎.
 
 ---
 
@@ -324,9 +324,9 @@ For `BLoC` I use `bloc_test` which lets you emit events and assert on state sequ
 
 *س: كيف تُعدّ الـ CI/CD لمشروع Flutter؟*
 
-I use GitHub Actions or Codemagic. Pipeline: run tests → build APK/IPA → upload to `Firebase App Distribution` or `TestFlight`. I also add code coverage gates and linting (`flutter analyze`, `dart format`). `Fastlane` handles signing automation.
+I use GitHub Actions or Codemagic. Pipeline: run tests → build APK‎/‎IPA → upload to `Firebase App Distribution` or `TestFlight`. I also add code coverage gates and linting (`flutter analyze`, `dart format`). `Fastlane` handles signing automation.
 
-أستخدم GitHub Actions أو Codemagic. مسار العمل (Pipeline): تشغيل الاختبارات ← بناء الـ APK/IPA ← الرفع على `Firebase App Distribution` أو `TestFlight`. كذلك أضيف شروطًا للـ Code coverage والـ Linting (عن طريق `flutter analyze` و `dart format`). وأستخدم `Fastlane` لأتمتة التوقيع (Signing).
+أستخدم GitHub Actions أو Codemagic. مسار العمل (Pipeline)‎: تشغيل الاختبارات ← بناء الـ APK‎/‎IPA ← الرفع على `Firebase App Distribution` أو `TestFlight`. كذلك أضيف شروطًا للـ Code coverage والـ Linting (عن طريق `flutter analyze` و `dart format`). وأستخدم `Fastlane` لأتمتة التوقيع (Signing)‎.
 
 > [!IMPORTANT]
 > This is a crucial question for the CTO - it shows you're an engineer, not just a developer.
@@ -341,7 +341,7 @@ I use GitHub Actions or Codemagic. Pipeline: run tests → build APK/IPA → upl
 
 I use `--dart-define` or `flutter_dotenv` for environment variables. Different flavors (using Flutter flavors or `build` configs) for different app IDs, API endpoints, and signing. Each environment has its own Firebase project.
 
-أستخدم `--dart-define` أو `flutter_dotenv` لمتغيرات البيئة (`environment variables`). وأستخدم Flavors مختلفة لكل بيئة لفصل الـ App IDs، ونقاط نهاية الـ APIs، والتوقيع. كل بيئة لها مشروع Firebase منفصل.
+أستخدم `--dart-define` أو `flutter_dotenv` لمتغيرات البيئة (`environment variables`)‎. وأستخدم Flavors مختلفة لكل بيئة لفصل الـ App IDs، ونقاط نهاية الـ APIs، والتوقيع. كل بيئة لها مشروع Firebase منفصل.
 
 ---
 
@@ -349,9 +349,9 @@ I use `--dart-define` or `flutter_dotenv` for environment variables. Different f
 
 *س: كيف تتعامل مع توقيع التطبيق (App signing) وإصداره للـ iOS و Android؟*
 
-Android: `keystore` file managed via `environment variables` in CI, not committed to repo. iOS: `Xcode` signing with `provisioning profiles` managed via `Match` (`Fastlane`). Both automated in CI pipeline.
+Android: `keystore` file managed via `environment variables` in CI, not committed to repo. iOS: `Xcode` signing with `provisioning profiles` managed via `Match` (`Fastlane`)‎. Both automated in CI pipeline.
 
-في Android: ملف الـ `keystore` تتم إدارته عبر `environment variables` في الـ CI، ولا يُرفع في الـ repo. في iOS: أستخدم توقيع `Xcode` مع الـ `provisioning profiles` التي تُدار عن طريق أداة `Match` (داخل `Fastlane`). العمليتان مؤتمتتان بالكامل في الـ CI Pipeline.
+في Android: ملف الـ `keystore` تتم إدارته عبر `environment variables` في الـ CI، ولا يُرفع في الـ repo. في iOS: أستخدم توقيع `Xcode` مع الـ `provisioning profiles` التي تُدار عن طريق أداة `Match` (داخل `Fastlane`)‎. العمليتان مؤتمتتان بالكامل في الـ CI Pipeline‎.
 
 ---
 
@@ -361,9 +361,9 @@ Android: `keystore` file managed via `environment variables` in CI, not committe
 
 *س: أين ترى Flutter بعد 3 سنوات؟*
 
-Flutter will likely dominate cross-platform including desktop and embedded. With `Wasm` (`WebAssembly`) support maturing, Flutter Web performance gaps are closing. I see it becoming the default choice for teams wanting one codebase across all platforms.
+Flutter will likely dominate cross-platform including desktop and embedded. With `Wasm` (`WebAssembly`)‎ support maturing, Flutter Web performance gaps are closing. I see it becoming the default choice for teams wanting one codebase across all platforms.
 
-على الأرجح سيسيطر Flutter على تطوير الـ cross-platform بما في ذلك سطح المكتب والأنظمة المدمجة (embedded). مع نضوج دعم `Wasm` (`WebAssembly`)، يتحسن أداء الـ Web كثيرًا. أرى أنه سيصبح الخيار الافتراضي للفرق التي تريد قاعدة كود (codebase) واحدة لجميع المنصات.
+على الأرجح سيسيطر Flutter على تطوير الـ cross-platform بما في ذلك سطح المكتب والأنظمة المدمجة (embedded)‎. مع نضوج دعم `Wasm` (`WebAssembly`)‎، يتحسن أداء الـ Web كثيرًا. أرى أنه سيصبح الخيار الافتراضي للفرق التي تريد قاعدة كود (codebase)‎ واحدة لجميع المنصات.
 
 > [!NOTE]
 > The CTO asks this to see if you think strategically, not just functionally.
@@ -378,7 +378,7 @@ Flutter will likely dominate cross-platform including desktop and embedded. With
 
 I follow flutter.dev, the Flutter GitHub repo, FlutterDev subreddit, and creators like Remi Rousselet (`Riverpod` author). I also build small projects to try new features, and contribute to open source when possible.
 
-أتابع موقع flutter.dev، ومستودع Flutter على GitHub، و Subreddit الخاص بـ FlutterDev، وصنّاع المحتوى والخبراء مثل Remi Rousselet (مؤلف `Riverpod`). كذلك أبني مشاريع صغيرة لتجربة الميزات الجديدة، وأحاول المساهمة في المصادر المفتوحة عندما أستطيع.
+أتابع موقع flutter.dev‎، ومستودع Flutter على GitHub، و Subreddit الخاص بـ FlutterDev، وصنّاع المحتوى والخبراء مثل Remi Rousselet (مؤلف `Riverpod`)‎. كذلك أبني مشاريع صغيرة لتجربة الميزات الجديدة، وأحاول المساهمة في المصادر المفتوحة عندما أستطيع.
 
 > [!TIP]
 > Mention specific names - it shows you actually follow the community.
@@ -393,7 +393,7 @@ I follow flutter.dev, the Flutter GitHub repo, FlutterDev subreddit, and creator
 
 This is a self-awareness question. Be honest - pick a real example (e.g. chose `GetX` early in a project, later migrated to `Riverpod` due to scalability issues). Show that you learned from it and can make better architectural decisions now.
 
-هذا سؤال يقيس الوعي الذاتي. كن صادقًا واختر مثالًا حقيقيًا (مثل اختيار `GetX` في بداية مشروع ثم الاضطرار للانتقال إلى `Riverpod` بسبب مشاكل في التوسع). وضّح أنك تعلّمت من الموقف وأنك أصبحت قادرًا على اتخاذ قرارات معمارية (architectural decisions) أفضل الآن.
+هذا سؤال يقيس الوعي الذاتي. كن صادقًا واختر مثالًا حقيقيًا (مثل اختيار `GetX` في بداية مشروع ثم الاضطرار للانتقال إلى `Riverpod` بسبب مشاكل في التوسع). وضّح أنك تعلّمت من الموقف وأنك أصبحت قادرًا على اتخاذ قرارات معمارية (architectural decisions)‎ أفضل الآن.
 
 > [!NOTE]
 > The CTO isn't looking for someone perfect, they want someone who learns from mistakes.
@@ -408,7 +408,7 @@ This is a self-awareness question. Be honest - pick a real example (e.g. chose `
 
 Code reviews with explanations (not just corrections), pair programming sessions, internal wikis with architecture decisions, encouraging questions, and assigning ownership of small features to build confidence.
 
-من خلال مراجعة الكود (Code reviews) مع تقديم شروحات (وليس مجرد تصحيح)، وجلسات البرمجة الزوجية (Pair programming)، وإنشاء ويكي داخلية للقرارات المعمارية. كذلك عن طريق تشجيعهم على طرح الأسئلة، وإعطائهم مسؤولية ميزات صغيرة لبناء ثقتهم بأنفسهم.
+من خلال مراجعة الكود (Code reviews)‎ مع تقديم شروحات (وليس مجرد تصحيح)، وجلسات البرمجة الزوجية (Pair programming)‎، وإنشاء ويكي داخلية للقرارات المعمارية. كذلك عن طريق تشجيعهم على طرح الأسئلة، وإعطائهم مسؤولية ميزات صغيرة لبناء ثقتهم بأنفسهم.
 
 > [!TIP]
 > Even if you're a junior now, answering like this shows you're a team player.
